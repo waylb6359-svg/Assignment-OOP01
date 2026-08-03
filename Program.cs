@@ -1,4 +1,10 @@
-﻿namespace Assignment_oop01
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
+using System.Drawing;
+using System.Reflection.PortableExecutable;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Assignment_oop01
 {
     internal class Program
     {
@@ -56,7 +62,119 @@
 
             #endregion
 
+            #region Q3):Smart Delivery Management System.
+            #region 1. Create a DeliveryAddress struct with:
 
+            //DeliveryAddress address1 = new DeliveryAddress("Los Angeles", "123 Main St", 90001);
+            //DeliveryAddress address2 = new DeliveryAddress("New York", "5th Avenue", 10001);
+            //address2 = address2;
+
+            //Console.WriteLine(address1.GetFullAddress());
+            //Console.WriteLine(address2.GetFullAddress());
+            ////دا STRUCT  وده معناه ان كل متغير بيحتوي علي نسخة من البيانات مش علي نفس البيانات   
+            #endregion
+
+            #region 6. In Main, build a Console Application that does the following:  (بمساعدة في بعض الحاجات مش كلو  AI)
+
+            DeliveryCenter center = new DeliveryCenter();
+
+                for (int i = 0; i < 3; i++)
+                {
+      
+                    Console.WriteLine($"Enter Shipment {i + 1} Data");
+
+                    Console.Write("Tracking Code: ");
+                    string trackingCode = Console.ReadLine();
+
+                    Console.Write("Description: ");
+                    string description = Console.ReadLine();
+
+                    double weight;
+                    Console.Write("Weight: ");
+                 
+                    while (!double.TryParse(Console.ReadLine(), out weight))
+                    {
+                        Console.Write("Invalid input. Enter Weight again: ");
+                    }
+                 
+                    decimal fee;
+                    Console.Write("Delivery Fee: ");
+                 
+                    while (!decimal.TryParse(Console.ReadLine(), out fee))
+                    {
+                        Console.Write("Invalid input. Enter Delivery Fee again: ");
+                    }
+                 
+                    Console.Write("City: ");
+                        string city = Console.ReadLine();
+                 
+                        Console.Write("Street: ");
+                        string street = Console.ReadLine();
+                    int buildingNumber;
+                    Console.Write("Building Number: ");
+                 
+                    while (!int.TryParse(Console.ReadLine(), out buildingNumber))
+                    {
+                        Console.Write("Invalid input. Enter Building Number again: ");
+                    }
+                 
+                 
+                    DeliveryAddress address = new DeliveryAddress(city, street, buildingNumber);
+                 
+                    Shipment shipment =  new Shipment(trackingCode, description, weight, fee, address);
+                 
+                        if (center.AddShipment(shipment))
+                            Console.WriteLine("Shipment added successfully.");
+                        else
+                            Console.WriteLine("Delivery Center is full.");
+                    }
+                 
+                    Console.WriteLine("\n------ All Shipments ------");
+                 
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (center[i] != null)
+                        {
+                            center[i].PrintShipment();
+                            Console.WriteLine();
+                        }
+                    }
+                 
+                    Console.Write("Enter tracking code to search: ");
+                    string code = Console.ReadLine();
+                 
+                    Shipment result = center[code];
+                 
+                    if (result != null)
+                    {
+                        Console.WriteLine("\nShipment Found:");
+                        result.PrintShipment();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Shipment not found.");
+                    }
+                 
+                    Console.WriteLine("\n------ Struct Copy Test ------");
+                 
+                    DeliveryAddress address1 =new DeliveryAddress("Cairo", "Tahrir Street", 15);
+                 
+                    DeliveryAddress address2 = address1;
+                 
+                    address2.City = "Cairo";
+                    address2.Street = "Makram Ebeid Street";
+                    address2.BuildingNumber = 20;
+                 
+                    Console.WriteLine("Original Address:");
+                    Console.WriteLine(address1.GetFullAddress());
+                 
+                    Console.WriteLine("Copied Address:");
+                    Console.WriteLine(address2.GetFullAddress());
+                 
+            #endregion
+
+
+            #endregion
 
 
 
