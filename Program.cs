@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            #region q1)
+            #region q1):
 
             #region a) What happens when a DeliveryAddress variable is copied into another variable and the copy is modified? //b) What happens when a Customer variable is copied into another variable and one variable modifies the object?
             //DeliveryAddress address1 = new DeliveryAddress();
@@ -39,6 +39,19 @@
 
 
 
+            #endregion
+
+            #endregion
+
+            #region q2):
+            #region a) Identify at least three problems with this design from an encapsulation perspective.
+            //1) كل الـ Fields معمولة public، وبالتالي أي كود خارج الكلاس يقدر يغير البيانات مباشرة.
+            //2) مفيش Encapsulation، لأن البيانات مش محمية.
+            //3) مفيش Validation للقيم، فمثلاً ممكن حد يدخل Weight بقيمة سالبة أو DeliveryFee بقيمة غير صحيحة.
+            #endregion
+            #region b) How can private fields and public properties improve this design?
+            // public properties و private fields  عملت  
+            //عشان احمي البيانات و مش اي حد يقدر يوصل للبيانات من بره الكلاس و اقدر اتحكم في البيانات اللي هتدخل و اللي هتخرج من الكلاس
             #endregion
 
             #endregion
